@@ -1,6 +1,12 @@
 pipeline {
-    agent any
-    tools {nodejs "NodeJS"}
+    //agent any
+    //tools {nodejs "NodeJS"}
+    agent {
+        docker {
+            image 'node:lts-buster-slim' 
+            args '-p 3000:3000' 
+        }
+    }
     
     stages {
         stage('Checkout Code') { 
