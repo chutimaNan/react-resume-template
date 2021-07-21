@@ -1,6 +1,10 @@
 pipeline {
     //agent any
     //tools {nodejs "NodeJS"}
+    stage('Initialize'){
+        def dockerHome = tool 'myDocker'
+        env.PATH = "${dockerHome}/bin:${env.PATH}"
+    }
     agent {
         docker {
             image 'node:lts-buster-slim' 
